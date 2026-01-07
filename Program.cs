@@ -6,9 +6,18 @@ using DigitalPettyCashLedger.Calculation;
 
 namespace DigitalPettyCashLedger
 {
+    // Entry point of the Digital Petty Cash Ledger application.
+    // This class handles user interaction through a menu-driven console interface
+    // and coordinates operations between Ledger and LedgerCalculator.
     class Program
     {
-        static void Main()
+
+        // Main execution loop of the application.
+        // Displays menu options, accepts user input,
+        // and routes control to appropriate operations.
+
+
+        public static void Main()
         {
             Ledger<IncomeTransaction> incomeLedger = new Ledger<IncomeTransaction>();
             Ledger<ExpenseTransaction> expenseLedger = new Ledger<ExpenseTransaction>();
@@ -51,6 +60,9 @@ namespace DigitalPettyCashLedger
 
         // ------------------ Helper Methods ------------------
 
+
+        // Accepts user input to create and store an income transaction
+        // in the income ledger after validating inputs.
         static void AddIncome(Ledger<IncomeTransaction> ledger)
         {
             int id = ReadInt("Enter Income ID: ");
@@ -73,6 +85,8 @@ namespace DigitalPettyCashLedger
             Console.WriteLine("Income added successfully.");
         }
 
+        // Accepts user input to create and store an expense transaction
+        // in the expense ledger after validating inputs.
         static void AddExpense(Ledger<ExpenseTransaction> ledger)
         {
             int id = ReadInt("Enter Expense ID: ");
@@ -95,6 +109,10 @@ namespace DigitalPettyCashLedger
             Console.WriteLine("Expense added successfully.");
         }
 
+
+        // Displays total income, total expenses, and net balance
+        // using the LedgerCalculator, and prints a transaction summary
+        // using polymorphic behavior.
         static void ShowSummary(
             Ledger<IncomeTransaction> incomeLedger,
             Ledger<ExpenseTransaction> expenseLedger)
@@ -126,6 +144,11 @@ namespace DigitalPettyCashLedger
 
         // ------------------ Utility Methods ------------------
 
+
+        // Reads and validates integer input from the user,
+        // repeatedly prompting until a valid number is entered.
+
+
         static int ReadInt(string message)
         {
             int value;
@@ -139,6 +162,8 @@ namespace DigitalPettyCashLedger
             }
         }
 
+        // Reads and validates decimal input from the user,
+        // repeatedly prompting until a valid amount is entered.
         static decimal ReadDecimal(string message)
         {
             decimal value;
